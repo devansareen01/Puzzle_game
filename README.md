@@ -20,7 +20,7 @@ To run the game locally, you need a web browser. No additional software or depen
 1. Clone the repository:
 
    ```bash 
-   git clone https://github.com/Mukeshkumar1611/Puzzle-Game.git
+   git clone https://github.com/devansareen01/Puzzle_game
 
 ## Contributing
 
