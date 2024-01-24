@@ -1,26 +1,29 @@
+
 document.getElementById("getCustomPicture").addEventListener("click", function () {
     const fileInput = document.getElementById("file-input");
     const selectedFile = fileInput.files[0];
 
     console.log(selectedFile);
 
-    if (!selectedFile) 
-    {
+    if (!selectedFile) {
         alert("No file selected. Please choose a picture.");
-    } 
-    else if (!selectedFile.type.startsWith("image/")) 
-    {
+    } else if (!selectedFile.type.startsWith("image/")) {
         alert("The selected file is not a picture. Please choose an image file.");
-    }
-    else 
-    {
-        const blob = new Blob([selectedFile], { type: selectedFile.type }); 
+    } else {
+        const blob = new Blob([selectedFile], { type: selectedFile.type });
 
-        // Store the Blob in sessionStorage as a Base64 string
-        
+        // Convert the Blob to a Base64 string
+        const reader = new FileReader();
+        reader.onload = function () {
+            const base64String = reader.result;
 
-        // Redirect to "index.html" or perform any other action
-        window.location.href = "index.html";
+            // Store the Base64 string in sessionStorage
+            sessionStorage.setItem("image", base64String);
+
+            // Redirect to "index.html" or perform any other action
+            window.location.href = "index.html";
+        };
+        reader.readAsDataURL(blob);
     }
 });
 
